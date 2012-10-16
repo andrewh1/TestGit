@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Ad Guides</title>
+</head>
+
+<body style="font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: normal; color: #444444;">
+
+<p></p>
+
+<p><font size="3"><b>Display Advertising</b></font><br /><br />
+<b>Export as flash player 8<br />Filesize 40k (50k Adtech), Up to 100k-inc-gif for monsters<br />
+Assumes usual Timer layer included with moviename set at top "_root.[moviename].gotoAndStop([suitable label or frame number]);"</b>
+</p>
+
+<p><font size="2"><b>Example Actions Layer:</b></font><br />
+
+<p>
+<font color="#FF0000">Set time limit depending on campaign below</font>
+<br />
+<font color="#0099FF">Include CCID if cards or any other passed variable here:</font>
+</p>
+
+<p>
+_root.maxduration = <font color="#FF0000">9999</font>; //SET RESTRICTION IN SECONDS HERE<br /><br />
+<b>apply_btn</b>.onRelease = function () { ButtonPress(<font color="#0099FF">32</font>); }<br />
+<b>comp_all</b>.onRelease = function () {ButtonPress(<font color="#0099FF">32</font>); };  // If Credit Cards<br />
+<b>fullframe</b>.onRelease = function () { ButtonPress(<font color="#0099FF">32</font>); }
+<br /><br />
+function ButtonPress (<font color="#0099FF">ccid:Number</font>)<br />
+{<br /><br />
+&nbsp;&nbsp;&nbsp;<font color="#9999FF">var parameters = "&age=" +age.selectedItem.data; // If Scroller used (age is name of scroller element)</font><br />
+&nbsp;&nbsp;&nbsp;<font color="#9999FF">var parameters = "&age=" + _root.ageselect; // If alternative scroller version</font><br />
+&nbsp;&nbsp;&nbsp;<font color="#0099FF">var parameters:String = "&amp;ccid=" + ccid; // If Credit Cards</font><br /><br />
+&nbsp;&nbsp;&nbsp;if(clickTAG != undefined){<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;getURL(clickTAG <font color="#0099FF">+ parameters</font>, "_blank");<br />
+&nbsp;&nbsp;&nbsp;} else {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;getURL(clickTag <font color="#0099FF">+ parameters</font>, "_blank");<br />
+&nbsp;&nbsp;&nbsp;}<br /><br />
+};
+</p>
+
+
+   var parameters = "&age=" +age.selectedItem.data; // If Scroller used
+   // var parameters = "&age=" + _root.ageselect; // IF alternative scroller version
+
+<p style="font-weight:bold;margin-bottom:0;">Adtech / MP:</p>
+<font color="#FF0000">No time limit</font><br />
+Filename is product, dimensions, version, providers: PR_XXXxYY_VVV_V_Adtech_MP
+
+<br />
+
+<p style="font-weight:bold;margin-bottom:0;">Media Math / MSN / CPX:</p>
+<font color="#FF0000">Time limit is 15 secs</font><br />
+Filename is product, dimensions, version, providers: PR_XXXxYY_VVV_V_MM_MSN_CPX
+
+<br />
+
+<p style="font-weight:bold;margin-bottom:0;">ADV / GDN:</p>
+<font color="#FF0000">Time limit is 15 secs - May have to set manually</font><br />
+<font color="#9999FF">Alternative scroller only - not flash component. As above code without timer and MSN case fix.</font>
+
+<br />
+
+<p style="font-weight:bold;margin-bottom:0;">Criteo:</p>
+<font color="#FF0000">Time limit is 15 secs set by Criteo automatically (Just make sure frame 1 is final frame)</font><br />
+Frame rate to be set at 20 rather than usual default 24<br />
+Filename is product, dimensions, version, provider: PR_XXXxYY_VVV_V_CR
+
+<br />
+
+<p style="font-weight:bold;margin-bottom:0;">Yahoo:</p>
+<font color="#FF0000">No time limit</font><br />
+Filename is product, dimensions, version, provider: PR_XXXxYY_VVV_V_YAH<br />
+Replacement link code in ButtonPress function (now in same actions layer as usual but no need for timer)
+
+<p>
+var a = _root.clickTAG.toLowerCase();<br />
+if (a.indexOf("http://") == 0 || a.indexOf("https://") == 0){<br />
+getURL(_root.clickTAG , "_blank");<br />
+<font color="#9999FF">getURL(_root.clickTAG + _root.ageselect, "_blank"); // _root.ageselect if scroller used (only alternative version)</font><br />
+<font color="#9999FF">getURL(_root.clickTAG + "&ccid=" + ccid, "_blank"); // CCID if Cards</font><br />
+}
+</p>
+
+<p>&nbsp;</p>
+
+</body>
+</html>
