@@ -14,14 +14,8 @@
 Assumes usual Timer layer included with moviename set at top "_root.[moviename].gotoAndStop([suitable label or frame number]);"</b>
 </p>
 
-<p><font size="2"><b>Example Actions Layer:</b></font><br />
 
-<p>
-<font color="#FF0000">Set time limit depending on campaign below</font>
-<br />
-<font color="#0099FF">Include CCID if cards or any other passed variable here:</font>
-</p>
-
+<!--- change -->
 <p>
 _root.maxduration = <font color="#FF0000">9999</font>; //SET RESTRICTION IN SECONDS HERE<br /><br />
 <b>apply_btn</b>.onRelease = function () { ButtonPress(<font color="#0099FF">32</font>); }<br />
@@ -41,9 +35,6 @@ function ButtonPress (<font color="#0099FF">ccid:Number</font>)<br />
 };
 </p>
 
-
-   var parameters = "&age=" +age.selectedItem.data; // If Scroller used
-   // var parameters = "&age=" + _root.ageselect; // IF alternative scroller version
 
 <p style="font-weight:bold;margin-bottom:0;">Adtech / MP:</p>
 <font color="#FF0000">No time limit</font><br />
